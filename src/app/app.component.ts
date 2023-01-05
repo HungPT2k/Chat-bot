@@ -12,6 +12,7 @@ export class AppComponent {
 
   constructor(protected chatShowcaseService: ChatService) {
     this.messages = this.chatShowcaseService.loadMessages();
+    this.chatShowcaseService.postHandleMessage('kết thúc').subscribe((data: any) => console.log(data));
   }
 
   sendMessage(message: string) {
