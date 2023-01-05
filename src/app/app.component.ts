@@ -14,9 +14,9 @@ export class AppComponent {
     this.messages = this.chatShowcaseService.loadMessages();
   }
 
-  sendMessage(event: any) {
+  sendMessage(message: string) {
     this.messages.push({
-      text: event.message,
+      text: message,
       date: new Date(),
       reply: true,
       user: {
@@ -24,22 +24,54 @@ export class AppComponent {
         avatar: 'https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/robot-face.png',
       },
     });
-    this.reply(event);
+    this.reply(message);
   }
 
-  reply(event: any) {
-    this.chatShowcaseService.postHandleMessage(event.message).subscribe(
-      (data: any) =>
-        this.messages.push({
-            text: data.reply,
-            date: new Date(),
-            reply: false,
-            user: {
-              name: 'Bot',
-              avatar: 'https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/robot-face.png'
+  reply(message: string) {
+    this.chatShowcaseService.postHandleMessage(message).subscribe(
+      (data: any) => {
+        if (data.isYesNo) {
+          this.messages.push({
+              type: 'button',
+              customMessageData: data.reply,
+              reply: false,
+              date: new Date(),
+              user: {
+                name: 'Bot',
+                avatar: 'https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/robot-face.png'
+              },
             }
-          }
-        )
+          )
+        } else {
+          this.messages.push({
+              text: data.reply,
+              date: new Date(),
+              reply: false,
+              user: {
+                name: 'Bot',
+                avatar: 'https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/robot-face.png'
+              }
+            }
+          )
+        }
+      }
     )
+  }
+
+  handleSelect(message: string) {
+    let text = 'Có';
+    if (message == 'NO') {
+      text = 'Không'
+    }
+    this.messages.push({
+      text: text,
+      date: new Date(),
+      reply: true,
+      user: {
+        name: 'Guest',
+        avatar: 'https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/robot-face.png',
+      },
+    });
+    this.reply(message);
   }
 }

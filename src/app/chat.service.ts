@@ -36,6 +36,6 @@ export class ChatService {
   }
 
   postHandleMessage(message: string): Observable<any> {
-    return this.http.get<any>(this.ENDPOINT_URL + `/reply?message=`+ message);
+    return this.http.get<any>(this.ENDPOINT_URL + `/reply?message=` + message);
   }
 }

@@ -1,6 +1,14 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {NbChatModule, NbLayoutModule, NbThemeModule} from '@nebular/theme';
+import {
+  NbButtonModule,
+  NbChatModule,
+  NbIconModule,
+  NbLayoutModule,
+  NbListModule,
+  NbTableModule,
+  NbThemeModule
+} from '@nebular/theme';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -21,6 +29,10 @@ import {HttpClientModule} from "@angular/common/http";
     NbLayoutModule,
     NbThemeModule.forRoot({name: 'dark'}),
     NbEvaIconsModule,
+    NbButtonModule,
+    NbTableModule,
+    NbListModule,
+    NbIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,15 @@
 <nb-layout>
 
   <nb-layout-header fixed>
-    <!-- Insert header here -->
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXJGWpPRnqx7QUlXZQ-3s2eQ5BFV_amo99uw&usqp=CAU " style="margin-right: 5px" height="40"
+               alt="MDB Logo" loading="lazy" />
+        </a>
+        <small>Chatbot</small>
+      </div>
+    </nav>
   </nb-layout-header>
 
   <nb-layout-column>
@@ -11,6 +19,18 @@
           <ng-template nbChatTitle [context]="{ text: 'Tư vấn dinh dưỡng' }" let-data>
             <div>{{data.text}}</div>
           </ng-template>
+
+          <div *nbCustomMessage="'button'; let buttonText">
+            <p class="text-control button-custom-message-text"> {{ buttonText }}</p>
+            <div class="">
+              <button nbButton status="control" style="margin-right: 5px" (click)="handleSelect('YES')">
+                Có
+              </button>
+              <button nbButton status="control" (click)="handleSelect('NO')">
+                Không
+              </button>
+            </div>
+          </div>
 
           <nb-chat-message
             *ngFor="let msg of messages"
@@ -24,10 +44,31 @@
             [latitude]="msg.latitude"
             [longitude]="msg.longitude"
             [avatar]="msg.user.avatar"
+            [customMessageData]="msg.customMessageData"
           >
           </nb-chat-message>
-          <nb-chat-form (send)="sendMessage($event)" [dropFiles]="true"></nb-chat-form>
+          <nb-chat-form (send)="sendMessage($event.message)" [dropFiles]="true"></nb-chat-form>
         </nb-chat>
+      </nb-layout-column>
+    </nb-layout>
+    <nb-layout>
+      <nb-layout-column>
+        <nb-list>
+          <nb-list-item >
+            <strong>
+              Tổng hợp các lệnh của hệ thống
+            </strong>
+
+          </nb-list-item>
+          <nb-list-item >
+            <nb-icon icon="star"></nb-icon>
+            sẵn sàng : Bắt đầu tư vấn
+          </nb-list-item>
+          <nb-list-item >
+            <nb-icon icon="star"></nb-icon>
+            kết thúc : Kết thúc tư vấn
+          </nb-list-item>
+        </nb-list>
       </nb-layout-column>
     </nb-layout>
 
