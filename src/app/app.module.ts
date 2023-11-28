@@ -1,5 +1,10 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Route, RouterModule } from '@angular/router';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {
   NbButtonModule,
   NbChatModule,
@@ -7,35 +12,41 @@ import {
   NbLayoutModule,
   NbListModule,
   NbTableModule,
-  NbThemeModule
+  NbThemeModule,
 } from '@nebular/theme';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {NbEvaIconsModule} from '@nebular/eva-icons';
-import {HttpClientModule} from "@angular/common/http";
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+const routes: Route[] = [
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'logout', component: LoginComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    ScheduleComponent,
+    HomeComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot(routes),
     NbChatModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NbLayoutModule,
-    NbThemeModule.forRoot({name: 'dark'}),
+    NbThemeModule.forRoot({ name: 'dark' }),
     NbEvaIconsModule,
     NbButtonModule,
     NbTableModule,
     NbListModule,
-    NbIconModule
+    NbIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
