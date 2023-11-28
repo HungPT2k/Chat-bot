@@ -1,13 +1,15 @@
-<nb-layout>
-
+<!-- <nb-layout>
   <nb-layout-header fixed>
     <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXJGWpPRnqx7QUlXZQ-3s2eQ5BFV_amo99uw&usqp=CAU "
-            style="margin-right: 5px" height="40"
-            alt="MDB Logo" loading="lazy"/>
+            style="margin-right: 5px"
+            height="40"
+            alt="MDB Logo"
+            loading="lazy"
+          />
         </a>
         <small> <strong class="text-control">Chatbot</strong></small>
       </div>
@@ -18,14 +20,25 @@
     <nb-layout>
       <nb-layout-column>
         <nb-chat size="small">
-          <ng-template nbChatTitle [context]="{ text: 'Tư vấn dinh dưỡng' }" let-data>
-            <div>{{data.text}}</div>
+          <ng-template
+            nbChatTitle
+            [context]="{ text: 'Tư vấn dinh dưỡng' }"
+            let-data
+          >
+            <div>{{ data.text }}</div>
           </ng-template>
 
           <div *nbCustomMessage="'button'; let buttonText">
-            <p class="text-control button-custom-message-text"> {{ buttonText }}</p>
+            <p class="text-control button-custom-message-text">
+              {{ buttonText }}
+            </p>
             <div class="">
-              <button nbButton status="control" style="margin-right: 5px" (click)="handleSelect('YES')">
+              <button
+                nbButton
+                status="control"
+                style="margin-right: 5px"
+                (click)="handleSelect('YES')"
+              >
                 Có
               </button>
               <button nbButton status="control" (click)="handleSelect('NO')">
@@ -49,7 +62,10 @@
             [customMessageData]="msg.customMessageData"
           >
           </nb-chat-message>
-          <nb-chat-form (send)="sendMessage($event.message)" [dropFiles]="true"></nb-chat-form>
+          <nb-chat-form
+            (send)="sendMessage($event.message)"
+            [dropFiles]="true"
+          ></nb-chat-form>
         </nb-chat>
       </nb-layout-column>
     </nb-layout>
@@ -57,11 +73,9 @@
       <nb-layout-column>
         <nb-list style="margin-top: 20px">
           <nb-list-item>
-            <strong>
-              Tổng hợp các lệnh của hệ thống
-            </strong>
+            <strong> Tổng hợp các lệnh của hệ thống </strong>
           </nb-list-item>
-          <nb-list-item style="margin-left: 10px;margin-top: 10px">
+          <nb-list-item style="margin-left: 10px; margin-top: 10px">
             <nb-icon icon="star" style="margin-right: 5px"></nb-icon>
             sẵn sàng : Bắt đầu tư vấn
           </nb-list-item>
@@ -72,12 +86,9 @@
         </nb-list>
       </nb-layout-column>
     </nb-layout>
-
-
   </nb-layout-column>
 
   <nb-layout-footer fixed>
-    <!-- Insert footer here -->
   </nb-layout-footer>
-
-</nb-layout>
+</nb-layout> -->
+<router-outlet></router-outlet>

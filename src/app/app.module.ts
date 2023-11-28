@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { ChatComponent } from './chat/chat.component';
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
@@ -30,6 +31,7 @@ const routes: Route[] = [
     LoginComponent,
     ScheduleComponent,
     HomeComponent,
+    ChatComponent,
   ],
   imports: [
     FormsModule,
