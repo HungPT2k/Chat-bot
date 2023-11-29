@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../chat.service';
+import { ChatService2 } from './chat.service';
 
 @Component({
   selector: 'chat-component',
@@ -7,10 +8,17 @@ import { ChatService } from '../chat.service';
   styleUrls: ['./chat.component.css'],
 })
 export class ChatComponent implements OnInit {
-  ngOnInit(): void {}
+  public user: any;
+  ngOnInit(): void {
+    const tmp = localStorage.getItem('user');
+    this.user = JSON.parse(tmp!);
+  }
   public messages!: any[];
 
-  constructor(protected chatShowcaseService: ChatService) {
+  constructor(
+    protected chatShowcaseService: ChatService,
+    private _chatService: ChatService2
+  ) {
     this.messages = this.chatShowcaseService.loadMessages();
     this.chatShowcaseService
       .postHandleMessage('kết thúc')
@@ -78,5 +86,9 @@ export class ChatComponent implements OnInit {
       },
     });
     this.reply(message);
+    // send mail
+    this._chatService.sendEmail(this.user).subscribe((res) => {
+      console.log('res mail;', res);
+    });
   }
 }

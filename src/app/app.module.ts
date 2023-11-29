@@ -25,6 +25,7 @@ const routes: Route[] = [
   { path: 'home', component: HomeComponent },
   { path: 'logout', component: LoginComponent },
   { path: 'chat', component: ChatComponent },
+  { path: 'schedule', component: ScheduleComponent },
 ];
 
 @NgModule({

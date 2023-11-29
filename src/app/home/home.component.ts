@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   public user!: any;
   public statusLogin: any;
   public toggleChat2!: boolean;
+  public isLogin: boolean = false;
+  public userName!: string;
   constructor(
     private _router: Router,
     protected chatShowcaseService: ChatService
@@ -25,9 +27,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
+    const tmp = localStorage.getItem('user');
+    this.userName = JSON.parse(tmp!).name;
     if (this.user) {
       this.statusLogin = 'Đăng xuất';
       this.toggleChat2 = true;
+      this.isLogin = true;
     } else {
       this.statusLogin = 'Đăng nhập';
       this.toggleChat2 = false;
