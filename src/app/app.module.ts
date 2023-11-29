@@ -20,9 +20,11 @@ import { LoginComponent } from './login/login.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ChatComponent } from './chat/chat.component';
 const routes: Route[] = [
+  { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'logout', component: LoginComponent },
+  { path: 'chat', component: ChatComponent },
 ];
 
 @NgModule({

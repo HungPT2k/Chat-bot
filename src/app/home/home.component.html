@@ -20,7 +20,11 @@
           style="
             background-image: url(https://careplusvn.com/Uploads/t/ba/banner-viet_0006499.jpeg);
           "
-        ></div>
+        >
+          <span class="w-100 d-flex justify-content-end p-4">
+            <button (click)="login()" class="btn btn-primary">Đăng nhập</button>
+          </span>
+        </div>
       </div>
       <div class="container mt-5">
         <div class="row">
@@ -431,43 +435,54 @@
       </div>
     </div>
 
-    <!-- <div class="chat-icon">
-        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+    <div class="chat-icon" (click)="toggleChat()">
+      <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+    </div>
+    <chat-component
+      style="position: fixed; right: 0; bottom: 140px"
+      *ngIf="toggleChatBot"
+    ></chat-component>
+    <!-- <div class="chatbot-box" *ngIf="toggleChatBot">
+      <button id="closeChatBot">
+        <i class="fa fa-close" aria-hidden="true"></i>
+      </button>
+      <div class="text-intro"><span>Bắt đầu chat</span></div>
+      <div id="chatList">
+        <ul></ul>
+      </div>
+      <div class="message-box-wrap">
+        <div class="message-box-con0" style="display: none">
+          <div class="message-box">
+            <input type="text" id="clientAnsTemp" style="display: none" />
+          </div>
+          <button id="send">Send</button>
+        </div>
+        <div class="message-box-client" style="display: block">
+          <div class="message-box">
+            <input type="text" id="clientAns" />
+          </div>
+          <button id="send-client">
+            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div
+          class="message-box-con1"
+          style="display: none; justify-content: space-around"
+        >
+          <button id="confirm" class="btn btn-success">Xác nhận</button>
+          <button id="noconfirm" class="btn btn-danger">Làm lại</button>
+        </div>
+      </div>
     </div> -->
 
-    <!-- <div class="chatbot-box">
-        <button id="closeChatBot"> 
-            <i class="fa fa-close" aria-hidden="true"></i>
-        </button>
-        <div class="text-intro"><span>Bắt đầu chat</span></div>
-        <div id="chatList">
-            <ul></ul>
-        </div>
-        <div class="message-box-wrap">
-            <div class="message-box-con0" style="display: none;">
-                <div class="message-box">
-                    <input type="text" id="clientAnsTemp" style="display: none;">
-                </div>
-                <button id="send">Send</button>
-            </div>
-            <div class="message-box-client" style="display: block;">
-                <div class="message-box">
-                    <input type="text" id="clientAns">
-                </div>
-                <button id="send-client"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-            </div>
-            <div class="message-box-con1" style="display: none; justify-content: space-around;">
-                <button id="confirm" class="btn btn-success">Xác nhận</button>
-                <button id="noconfirm" class="btn btn-danger">Làm lại</button>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- <script>
-        $SCRIPT_ROOT = {{ request.script_root|tojson }};
+    <script>
+      $SCRIPT_ROOT = {{ request.script_root|tojson }};
     </script>
-    -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>  -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='app.js') }}"
+    ></script>
   </body>
 </html>

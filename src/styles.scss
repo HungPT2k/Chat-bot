@@ -1,8 +1,8 @@
-@use 'themes' as *;
-
-@use '@nebular/theme/styles/globals' as *;
+@use "themes" as *;
+// @import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
+@use "@nebular/theme/styles/globals" as *;
 
 @include nb-install() {
   @include nb-theme-global();
-};
+}
 /* You can add global styles to this file, and also import other style files */

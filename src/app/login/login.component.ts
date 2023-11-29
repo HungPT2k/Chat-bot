@@ -5,33 +5,41 @@ import { AuthenticationService } from './auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit{
-  username: string ="hung";
-  password : string ="123";
+export class LoginComponent implements OnInit {
+  username: string = 'hung';
+  password: string = '123';
   errorMessage = 'Invalid Credentials';
-  successMessage: string ="Login successFully";
+  successMessage: string = 'Login successFully';
   invalidLogin = false;
   loginSuccess = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService) {   }
+    private authenticationService: AuthenticationService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   handleLogin() {
-    this.authenticationService.authenticationService(this.username, this.password).subscribe((result)=> {
-      this.invalidLogin = false;
-      this.loginSuccess = true;
-      this.successMessage = 'Login Successful.';
-      this.router.navigate(['/home']);
-    }, () => {
-      this.invalidLogin = true;
-      this.loginSuccess = false;
-    });      
+    this.authenticationService
+      .authenticationService(this.username, this.password)
+      .subscribe(
+        (result) => {
+          this.invalidLogin = false;
+          this.loginSuccess = true;
+          this.successMessage = 'Login Successful.';
+          this.router.navigate(['/home']);
+        },
+        () => {
+          this.invalidLogin = true;
+          this.loginSuccess = false;
+        }
+      );
+  }
+  back() {
+    this.router.navigate(['home']);
   }
 }
