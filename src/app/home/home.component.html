@@ -22,7 +22,9 @@
           "
         >
           <span class="w-100 d-flex justify-content-end p-4">
-            <button (click)="login()" class="btn btn-primary">Đăng nhập</button>
+            <button (click)="login()" class="btn btn-primary">
+              {{ statusLogin }}
+            </button>
           </span>
         </div>
       </div>
@@ -435,7 +437,7 @@
       </div>
     </div>
 
-    <div class="chat-icon" (click)="toggleChat()">
+    <div class="chat-icon" (click)="toggleChat()" *ngIf="toggleChat2">
       <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
     </div>
     <chat-component

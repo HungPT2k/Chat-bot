@@ -14,19 +14,24 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {}
 
   authenticationService(username: String, password: String) {
-    return this.http
-      .get(`http://localhost:8080/api/v1/basicauth`, {
-        headers: {
-          authorization: this.createBasicAuthToken(username, password),
-        },
-      })
-      .pipe(
-        map((res) => {
-          this.username = username;
-          this.password = password;
-          this.registerSuccessfulLogin(username, password);
-        })
-      );
+    return this.http.post(`http://localhost:8080/nutrition/login`, {
+      name: username,
+      pass: password,
+      // headers: {
+      //   authorization: this.createBasicAuthToken(username, password),
+      // },
+    });
+    // .pipe(
+    //   map((res: any) => {
+    //     if (res) {
+    //       localStorage.setItem('user', res);
+    //     }
+
+    //     this.username = username;
+    //     this.password = password;
+    //     this.registerSuccessfulLogin(username, password);
+    //   })
+    // );
   }
 
   createBasicAuthToken(username: String, password: String) {

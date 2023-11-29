@@ -10,7 +10,9 @@ import { ChatService } from '../chat.service';
 export class HomeComponent implements OnInit {
   public toggleChatBot!: boolean;
   public messages!: any[];
-
+  public user!: any;
+  public statusLogin: any;
+  public toggleChat2!: boolean;
   constructor(
     private _router: Router,
     protected chatShowcaseService: ChatService
@@ -22,11 +24,20 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = localStorage.getItem('user');
+    if (this.user) {
+      this.statusLogin = 'Đăng xuất';
+      this.toggleChat2 = true;
+    } else {
+      this.statusLogin = 'Đăng nhập';
+      this.toggleChat2 = false;
+    }
     this.toggleChatBot = false;
   }
   login() {
     this._router.navigate(['/login']);
   }
+
   toggleChat() {
     this.toggleChatBot = !this.toggleChatBot;
   }

@@ -27,11 +27,16 @@ export class LoginComponent implements OnInit {
     this.authenticationService
       .authenticationService(this.username, this.password)
       .subscribe(
-        (result) => {
+        (result: any) => {
           this.invalidLogin = false;
           this.loginSuccess = true;
-          this.successMessage = 'Login Successful.';
-          this.router.navigate(['/home']);
+          if (result) {
+            this.successMessage = 'Login Successful.';
+            localStorage.setItem('user', JSON.stringify(result));
+            this.router.navigate(['home']);
+          } else {
+            this.successMessage = 'Login False';
+          }
         },
         () => {
           this.invalidLogin = true;
@@ -41,5 +46,6 @@ export class LoginComponent implements OnInit {
   }
   back() {
     this.router.navigate(['home']);
+    localStorage.removeItem('user');
   }
 }
