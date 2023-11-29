@@ -4,7 +4,7 @@
     <div class="card">
       <div class="card-body">
         <form class="form-group">
-          <div class="alert alert-warning" *ngIf="invalidLogin">
+          <div class="alert alert-danger" *ngIf="invalidLogin">
             {{ errorMessage }}
           </div>
           <div class="alert alert-success" *ngIf="loginSuccess">
