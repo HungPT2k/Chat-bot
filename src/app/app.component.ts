@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(protected chatShowcaseService: ChatService) {
     this.messages = this.chatShowcaseService.loadMessages();
     this.chatShowcaseService
-      .postHandleMessage('kết thúc')
+      .postHandleMessage('kết thúc','')
       .subscribe((data: any) => console.log(data));
   }
 
@@ -33,7 +33,7 @@ export class AppComponent {
 
   reply(message: string) {
     this.chatShowcaseService
-      .postHandleMessage(message)
+      .postHandleMessage(message,'')
       .subscribe((data: any) => {
         if (data.isYesNo) {
           this.messages.push({

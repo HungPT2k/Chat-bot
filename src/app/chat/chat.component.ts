@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   ) {
     this.messages = this.chatShowcaseService.loadMessages();
     this.chatShowcaseService
-      .postHandleMessage('kết thúc')
+      .postHandleMessage('kết thúc','')
       .subscribe((data: any) => console.log(data));
   }
 
@@ -31,7 +31,7 @@ export class ChatComponent implements OnInit {
       date: new Date(),
       reply: true,
       user: {
-        name: 'Guest',
+        name: this.user.name,
         avatar:
           'https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/robot-face.png',
       },
@@ -41,7 +41,7 @@ export class ChatComponent implements OnInit {
 
   reply(message: string) {
     this.chatShowcaseService
-      .postHandleMessage(message)
+      .postHandleMessage(message,this.user.id)
       .subscribe((data: any) => {
         if (data.isYesNo) {
           this.messages.push({
@@ -86,7 +86,7 @@ export class ChatComponent implements OnInit {
       },
     });
     this.reply(message);
-    // send mail
+   // send mail
     this._chatService.sendEmail(this.user).subscribe((res) => {
       console.log('res mail;', res);
     });

@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ) {
     this.messages = this.chatShowcaseService.loadMessages();
     this.chatShowcaseService
-      .postHandleMessage('kết thúc')
+      .postHandleMessage('kết thúc','')
       .subscribe((data: any) => console.log(data));
   }
 
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   reply(message: string) {
     this.chatShowcaseService
-      .postHandleMessage(message)
+      .postHandleMessage(message,'')
       .subscribe((data: any) => {
         if (data.isYesNo) {
           this.messages.push({
